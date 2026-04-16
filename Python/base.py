@@ -110,6 +110,7 @@ print(getCustomerData) #november
 """ Estrutura condicional (If, Elif, Else) - 14/04/2026 """
 # ===================================================
 
+"""
 position = "Webdesigner"
 correct_password = True
 
@@ -172,3 +173,58 @@ if senha:
     pass  # O sistema passa reto por aqui sem dar erro, e depois você escreve a lógica
 else:
     print("Senha incorreta")
+"""
+
+# ===================================================
+""" Laços de repetição (loops) - 15/04/2026 """
+# ===================================================
+
+# ---------------------------------------------------- FOR IN
+for i in range(5):
+    print(i)  # 0 1 2 3 4 (sendo um em cada linha)
+
+# Conta de 2 em 2, parando antes do 10
+for numero in range(0, 10, 2):
+    print(numero)  # 0, 2, 4, 6, 8
+
+cores = ["black", "red", "green", "toranja"]
+for cor in cores:
+    print(cor)  # black red green toranja (sendo um em cada linha)
+
+users = ["Rebecca", "Daniele", "Estelas", "Esther"]
+for eachUser in users:
+    print(f"Welcome e-mail to {eachUser}")  # Welcome e-mail to Rebecca and so on....
+
+
+# ---------------------------------------------------- ENUMERATE
+pages = ["home", "about us", "contact", "blog"]
+# o start=1 faz o nº começar no 1 em vez do 0
+for position, pageName in enumerate(pages, start=1):
+    print(
+        f"Menu {position}: {pageName}"
+    )  # Menu 1: home  Menu 2: about us Menu 3: contact Menu 4: blog
+
+# ---------------------------------------------------- BREAK CONTINUE
+# Usando o break para economizar processamento
+passwordz = ["231", "admin", "20haha26"]
+for item in passwordz:
+    if item == "admin":
+        print(
+            f"{item} = Pass found, stop searching"
+        )  # admin = Pass found, stop searching
+        break
+
+# Usando continue para limpar dados ruins
+prices = [10.90, 0, 25, 29.90, 0, 15]
+for item in prices:
+    if item == 0:
+        continue  # Ignora o zero e vai para o próximo
+    print(
+        f"Proceed to pay USD $ {item}"
+    )  # Proceed to pay USD $ 10.9 Proceed to pay USD $ 25 Proceed to pay USD $ 29.9 Proceed to pay USD $ 15
+
+# ---------------------------------------------------- Compreensão de listas
+valores = [10, 20, 30]
+# Cria uma lista nova somando 5 em cada valor
+valores_com_taxa = [valor + 5 for valor in valores]
+print(valores_com_taxa)  # [15, 25, 35]
