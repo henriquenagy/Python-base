@@ -178,7 +178,7 @@ else:
 # ===================================================
 """ Laços de repetição (loops) - 15/04/2026 """
 # ===================================================
-
+"""
 # ---------------------------------------------------- FOR IN
 for i in range(5):
     print(i)  # 0 1 2 3 4 (sendo um em cada linha)
@@ -228,3 +228,27 @@ valores = [10, 20, 30]
 # Cria uma lista nova somando 5 em cada valor
 valores_com_taxa = [valor + 5 for valor in valores]
 print(valores_com_taxa)  # [15, 25, 35]
+"""
+
+# ===================================================
+""" Módulos - 16/04/2026 """
+# ===================================================
+import math
+
+print(math.sqrt(9))  # Raiz quadrada do 9 = 3.0
+print(math.floor(3.9))  # Arredonda para baixo = 3
+
+from random import choice, randint
+
+sorteio = ["joão", "maria", "felipe"]
+print(choice(sorteio))  # Escolhe um item aleatório da sua lista
+print(randint(1, 10))  # Sorteia um nº de 1 a 10
+
+import datetime as dt
+
+hoje = dt.date.today()
+print(f"A data de hoje é {hoje}")  # A data de hoje é 2026-04-16
+
+hour1 = dt.datetime.now()
+hour2 = dt.datetime.today()
+print(hour1, hour2)
