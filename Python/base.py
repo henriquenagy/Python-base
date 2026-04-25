@@ -233,6 +233,7 @@ print(valores_com_taxa)  # [15, 25, 35]
 # ===================================================
 """ Módulos - 16/04/2026 """
 # ===================================================
+"""
 import math
 
 print(math.sqrt(9))  # Raiz quadrada do 9 = 3.0
@@ -249,6 +250,82 @@ import datetime as dt
 hoje = dt.date.today()
 print(f"A data de hoje é {hoje}")  # A data de hoje é 2026-04-16
 
+# Meu teste de como pegar a hora usa a library
 hour1 = dt.datetime.now()
 hour2 = dt.datetime.today()
 print(hour1, hour2)
+"""
+
+# ===================================================
+""" Funções - 24/04/2026 """
+
+
+# ===================================================
+# 1. Modelo básico
+def create_slug(title):
+    "Remove the page name to turn into a valid link"
+    slug = title.lower().replace(" ", "-")
+    return slug
+
+
+Newlink = create_slug("This is the new name")
+print(Newlink)  # this-is-the-new-name
+
+
+# 2. Saudação nome
+def helloFunc(name):
+    return "Hello " + name
+
+
+msg = helloFunc("najones, how are u?")
+print(msg)  # Hello najones, how are u?
+
+
+# Media calc
+def mediaCalc(n1, n2):
+    result = (n1 + n2) / 2
+    return result
+
+
+print(mediaCalc(10, 4))  # 7.0
+
+
+# def com for ir
+def showNegative(numberz):
+    for num in numberz:
+        if 0 < num < 7:  # num > 0 and num < 7: também dá certo
+            print(num)
+
+
+aleatorys = [0, 3, 2, 12, 22, 5432, 2, 12, 0.4, 0.55]
+showNegative(aleatorys)
+
+
+# def com for ir metodo 2
+def find_webp(archives_files):
+    for archi in archives_files:
+        if archi.endswith(".webp"):
+            print(archi)
+
+
+image = ["logo.png", "fundo.png", "bannerhome.png", "mobcapa.webp"]
+find_webp(image)  # mobcapa.webp
+
+
+# 5. Calcular a altura de uma imagem
+def calc_height(widthz):
+    """Descobre a altura exata mantendo a proporção 16:9"""
+    return (widthz * 9) / 16
+
+
+help(calc_height)  # Lê o texto das aspas triplas no terminal
+print(calc_height(1920))  # 1080.0
+
+
+# 6. Valor padrão
+def rename_archive(name, format=("webp")):
+    return f"{name}-otimizado.{format}"
+
+
+print(rename_archive("banner"))  # banner-otimizado.webp
+print(rename_archive("logo", "svg"))  # logo-otimizado.svg
