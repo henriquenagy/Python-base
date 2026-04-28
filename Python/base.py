@@ -258,9 +258,8 @@ print(hour1, hour2)
 
 # ===================================================
 """ Funções - 24/04/2026 """
-
-
 # ===================================================
+"""
 # 1. Modelo básico
 def create_slug(title):
     "Remove the page name to turn into a valid link"
@@ -314,7 +313,7 @@ find_webp(image)  # mobcapa.webp
 
 # 5. Calcular a altura de uma imagem
 def calc_height(widthz):
-    """Descobre a altura exata mantendo a proporção 16:9"""
+    #Descobre a altura exata mantendo a proporção 16:9
     return (widthz * 9) / 16
 
 
@@ -329,3 +328,31 @@ def rename_archive(name, format=("webp")):
 
 print(rename_archive("banner"))  # banner-otimizado.webp
 print(rename_archive("logo", "svg"))  # logo-otimizado.svg
+"""
+# ===================================================
+""" Resolução de exercícios univesp - 28/04/2026 """
+# ===================================================
+# A soma dos 5 primeiros inteiros positivos:
+numeros = [1, 2, 3, 4, 5]
+print(sum(numeros))  # 15
+
+# 2. A idade média de Sara (idade 23), Mark (idade 19) e Fátima (idade 31)
+osNumbers = [23, 19, 31]
+media = sum(osNumbers)
+print(media / 3)  # 24.333333333333332
+
+# 3. O número de vezes que 73 cabe em 403.
+print(403 // 73)  # 5
+
+# 4. O resto de quando 403 é dividido por 73.
+print(403 % 73)  # 38
+
+# 5. 2 à 10ª potência.
+print(2**10)  # 1024
+
+# 6. O valor absoluto da distância entre a altura de Sara (54 polegadas) e a altura de Mark (57 polegadas).
+print(abs(54 - 57))  # 3
+
+# 7. O menor preço entre os seguintes preços: R$ 34,99, R$ 29,95 e R$ 31,50.
+prices = [34.99, 29.95, 31.50]
+print(min(prices))  # 29.95
