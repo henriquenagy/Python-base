@@ -1,5 +1,6 @@
 # ===================================================
 """Saída e entrada de dados - 10/04/2026"""
+
 # ===================================================
 """
 print("olá mundo")
@@ -329,9 +330,194 @@ def rename_archive(name, format=("webp")):
 print(rename_archive("banner"))  # banner-otimizado.webp
 print(rename_archive("logo", "svg"))  # logo-otimizado.svg
 """
+
+# ===================================================
+""" Gerenciamento de memória | Memória: Mutáveis vs Imutáveis - 04/05/2026 """
+# ===================================================
+"""
+# ---------------------------------------------------- Imutáveis (int, float, bool, str, tuplas). Se você muda o valor, o Python cria um novo objeto.
+a = 10
+b = a
+a = 20
+print(b)  # 10 (b continua apontando para o valor antigo)
+
+# ---------------------------------------------------- Mutáveis (listas [], dicionários {}, set). A caixa na memória é a mesma, o que muda é o conteúdo.
+lista_a = [1, 2, 3]
+lista_b = lista_a
+lista_a.append(4)
+print(lista_b)  # [1, 2, 3, 4] (b muda junto, pois é a mesma lista na memória)
+
+# OBS: Listas [] aceitam mudanças. Tuplas () são bloqueadas. O Python trava se tentar mudar o item da tupla.
+"""
+
+# ===================================================
+""" Programação orientada a objetos (POO) - 04/05/2026 """
+# ===================================================
+""" 
+
+class Usuario:
+    def __init__(self, nome, cargo):
+        self.nome = nome
+        self.cargo = cargo
+
+    def apresentar(self):
+        return f"olá, sou {self.nome} e atuo como {self.cargo}"
+
+
+user1 = Usuario("Henrique", "Webdesigner")
+print(user1.apresentar())  # olá, sou Henrique e atuo como Webdesigner
+
+
+# ---------------------------------------------------- Herança
+class Programador(Usuario):
+    def codar(self):
+        print(f"{self.nome} está escrevendo em python")
+
+
+dev = Programador("Nagys", "Dev")
+dev.codar()  # Ação exclusiva dele | Nagys está escrevendo em python
+print(dev.apresentar())  # Herdou da classe pai  | olá, sou Nagys e atuo como Dev
+
+
+# ---------------------------------------------------- Sobrecarga 1
+class Carrinho:
+    def __init__(self, valor):
+        # Cria o objeto e guarda o valor inicial na memória.
+        self.valor = valor
+
+    # O __add__ só acorda quando o sinal de + é usado entre dois objetos desta classe.
+    def __add__(self, outro_carrinho):
+        # Soma o valor deste objeto (self) com o objeto visitante (outro_carrinho).
+        # O return cria e devolve um carrinho novo com o total.
+        return Carrinho(self.valor + outro_carrinho.valor)
+
+
+compra1 = Carrinho(50)  # Cria o primeiro objeto.
+compra2 = Carrinho(120)  # Cria o segundo objeto, independente do primeiro.
+
+# O sinal de + engatilha o __add__. O compra1 vira o 'self' e o compra2 vira o 'outro_carrinho'.
+total = compra1 + compra2
+print(total.valor)  # 170
+
+
+# ---------------------------------------------------- Sobrecarga mais completo
+# Exemplo real de sobrecarga fundindo dados de dispositivos diferentes
+class Carrinho:
+    def __init__(self, itens, valor_total):
+        self.itens = itens
+        self.valor_total = valor_total
+
+    # Ensina o Python a fundir dois objetos complexos em um só
+    def __add__(self, outro_carrinho):
+        # Junta a lista de itens dos dois carrinhos
+        nova_lista = self.itens + outro_carrinho.itens
+
+        # Soma o preço dos dois carrinhos
+        novo_valor = self.valor_total + outro_carrinho.valor_total
+
+        # Devolve um terceiro carrinho novinho com tudo somado e fundido
+        return Carrinho(nova_lista, novo_valor)
+
+
+# Carrinho 1 criado isoladamente no celular
+carrinho_celular = Carrinho(["Camiseta"], 50)
+
+# Carrinho 2 criado isoladamente no PC
+carrinho_pc = Carrinho(["Tenis", "Meia"], 120)
+
+# O sinal de + dispara o __add__ e faz a fusão dos dois objetos
+carrinho_final = carrinho_celular + carrinho_pc
+
+print(carrinho_final.itens)  # ['Camiseta', 'Tenis', 'Meia']
+print(carrinho_final.valor_total)  # 170
+"""
+
+# ===================================================
+""" Recursão - 04/05/2026 """
+# ===================================================
+""" 
+
+def contagem_regressiva(n):
+    if n <= 0:  # Caso base: ponto de parada
+        print("Fim")
+        return
+    print(n)
+    contagem_regressiva(n - 1)  # Chama ela mesma se aproximando do caso base
+
+
+contagem_regressiva(10)
+"""
+# ===================================================
+""" Estruturas de dados (Pilhas, filas e árvores) - 04/05/2026 """
+# ===================================================
+""" 
+# Exemplo: botão voltar do navegador.
+pilha = []
+pilha.append("Pagina 1")  # Insere no topo
+pilha.append("Pagina 2")
+print(pilha)  # ['Pagina 1', 'Pagina 2']
+ultima_pagina = pilha.pop(-1)  # Remove do topo
+print(pilha)  # ['Pagina 1']
+
+# Exemplo: fila de tarefas do processador.
+from collections import deque
+
+fila = deque(["Cliente 1", "cliente 2"])
+print(fila)  # deque(['Cliente 1', 'cliente 2'])
+fila.append("Cliente 3")  # Entra no fim da fila
+print(fila)  # deque(['Cliente 1', 'cliente 2', 'Cliente 3'])
+atendido = fila.popleft()  # O primeiro item sai do começo da fila
+print(fila)  # deque(['cliente 2', 'Cliente 3'])
+
+"""
+# ===================================================
+""" Algoritmos de busca e ordenação 05/05/2026 """
+# ===================================================
+# ---------------------------------------------------- LISTA ORDENADA
+# Na vida real, não escrevemos Bubble sort ou Quick sort na mão. O Python já tem o Quick/Merge sort embutido e super rápido.
+lista_nomes = ["Zecas", "Carol", "Mayco", "Cíntia", "Ana paula", "Elon"]
+lista_ordenada = sorted(lista_nomes)
+print(lista_ordenada)  # ['Ana paula', 'Carol', 'Cíntia', 'Elon', 'Mayco', 'Zecas']
+
+# ---------------------------------------------------- PESQUISA SEQUENCIAL (O jeito lento)
+# Olha um por um. Péssimo para listas grandes.
+for nome in lista_ordenada:
+    if nome == "Carol":
+        print(f"{nome} foi achado em sequencial!")  # Carol foi achado em sequencial!
+        break
+
+
+# ---------------------------------------------------- PESQUISA SEQUENCIAL (O jeito profissional)
+# Só funciona em listas já ordenadas. Corta a lista pela metade a cada passo.
+def busca_binaria(lista, alvo):
+    inicio = 0
+    fim = len(lista) - 1
+
+    while inicio <= fim:
+        meio = (inicio + fim) // 2  # Acha o índice do meio exato
+        chute = lista[meio]
+
+        if chute == alvo:
+            return f"Achou binária: {chute}"
+        if chute > alvo:
+            fim = meio - 1  # Descarta a metade da direita
+        else:
+            inicio = meio + 1  # Descarta a metade da esquerda
+    return "Não achou"
+
+
+print(busca_binaria(lista_ordenada, "carlos"))  # Não achou
+
+
+# ----------------------------------------------------Transformação de chave ou Hashing (O mais rápido de todos)
+# É o que o dicionário do Python usa. Você vai direto no endereço da memória.
+clientes = {"Carol": "ativo", "Ana": "inativo"}
+print(clientes["Carol"])  # Retorna 'ativo' instantaneamente
+
 # ===================================================
 """ Resolução de exercícios univesp - 28/04/2026 """
 # ===================================================
+"""
 # A soma dos 5 primeiros inteiros positivos:
 numeros = [1, 2, 3, 4, 5]
 print(sum(numeros))  # 15
@@ -356,3 +542,4 @@ print(abs(54 - 57))  # 3
 # 7. O menor preço entre os seguintes preços: R$ 34,99, R$ 29,95 e R$ 31,50.
 prices = [34.99, 29.95, 31.50]
 print(min(prices))  # 29.95
+"""
