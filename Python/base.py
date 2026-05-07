@@ -5,27 +5,29 @@
 """
 print("olá mundo")
 
-fruta= "banana"
+fruta = "banana"
 tipo = "Bolão de "
-print(tipo+fruta)
+print(tipo + fruta)
 
-print("Repetição"*6)
+print("Repetição" * 6)
 
 nome = "Najones"
-print(nome*3)
+print(nome * 3)
 
-print(nome + "ricaço"*3)
+print(nome + "ricaço" * 3)
 
-print(f"Olá, {nome} !") #f-string
+print(f"Olá, {nome} !")  # f-string
 
-print("O tipo é:", type(nome)) #O tipo é: <class 'str'>
-print("Listagem de:", dir(nome)) # [analogia] o dir te mostra todos os botões do rádio.
-help(str) #[analogia] O help(str) é o manual que te ensina o que acontece quando você aperta cada botão.
+print("O tipo é:", type(nome))  # O tipo é: <class 'str'>
+print("Listagem de:", dir(nome))  # [analogia] o dir te mostra todos os botões do rádio.
+help(
+    str
+)  # [analogia] O help(str) é o manual que te ensina o que acontece quando você aperta cada botão.
 
 cor = "#8750f7"
-print(type(cor)) # <class 'str'>
-"""
+print(type(cor))  # <class 'str'>
 
+"""
 # ===================================================
 """ Operadores matemáticos e lógicos - 10/04/2026"""
 # ===================================================
@@ -50,67 +52,54 @@ print(my_namez[2:-2:2]) #niu ayMri - (Corta os 2 primeiros, tira os 2 últimos e
 # ===================================================
 """ Listas e dicionários - 13/04/2026"""
 # ===================================================
-
 """
-#---------------------------------------------------- LISTAS
-colors = ["blue", "red", "green", "orange"] #Lista com texto
-prices = [27.66,29,17,11.23,9.22,10,17,4,11,54,67,17] #Lista com números, usa-se o ponto como separação e não virgula
-pickColorOne = colors[0] #Seleciona a 1a posição
-print(pickColorOne) #blue
+# Operações profissionais com números
+precos = [27.66, 29, 17, 11.23, 9.22, 10, 17, 4, 11, 54, 67, 17]
 
-print("Soma todos os números de uma vez:",sum(prices)) #274.11
-print("Quantos itens existem na lista:",len(prices)) #12
-print("Quantas vezes um nº específico aparece:", prices.count(17)) #3
-print("Organizada na mesma linha:", sorted(prices)) #[4, 9.22, 10, 11...] Ñ altera original, só cria uma cópia já organizada para mostrar na tela.
-print("Checa pra vc confirmar que já voltou ao normal",prices) # [27.66, 29, 17, 11.23, 9.22, 10, 17, 4, 11, 54, 67, 17]
-prices.sort() #SORT - Cuidado com o de cima!!!
-print("Lista organizada:", prices) #[4, 9.22, 10, 11, 11.23, 17, 17, 17, 27.66, 29, 54, 67] ALTERA DE VEZ!!!
-print("Menor nº da lista",min(prices)) #4
-print("Maior nº da lista",max(prices)) #67
-prices[0],prices[-1] = prices[-1], prices[0] #Inverter posições
-print(prices)#INVERTIDO - [67, 9.22, 10, 11, 11.23, 17, 17, 17, 27.66, 29, 54, 4]
+print(sum(precos))   # Soma tudo: 274.11
+print(len(precos))   # Total de itens: 12
+print(precos.count(17)) # Quantas vezes tem o 17: 3
 
-# Cuidado com cópias de listas
+# Organização
+print(sorted(precos)) # Mostra organizado, mas não altera a lista original
+precos.sort()         # Altera a lista precos definitivamente para organizada
+
+# Valores extremos
+print(min(precos)) # 4
+print(max(precos)) # 67
+
+# Inverter posições manualmente (Ex: trocar o primeiro pelo último)
+precos[0], precos[-1] = precos[-1], precos[0]
+
+# Cópia de segurança
 lista_a = [1, 2, 3]
-lista_b = lista_a # Não é uma cópia. Se mudar a, muda b.
-lista_c = lista_a.copy() # Jeito certo de criar uma cópia independente
-"""
+lista_b = lista_a        # Se mudar a, muda b (elas estão ligadas)
+lista_c = lista_a.copy() # Cópia independente. Se mudar a, c continua igual
 
-"""
-#----------------------------------------------------  Métodos para manipular os itens
-Apostolos = ["simão pedro", "andre", "filipe", "bartolomeu", "tomé", "simão", "tadeu", "lucas", "tiago", "mateus", "joão", "judas"]
+# ---------------------------------------Gerenciando itens (Ex: Lista de Apóstolos)
+apostolos = ["pedro", "andre", "filipe", "tiago", "judas"]
 
-print("judas" in Apostolos) # Retorna True se existir na lista
+# Busca e Condição
+if "judas" in apostolos:
+    print("Encontrado na lista")
 
-if "judas" in Apostolos: 
-    print("Judas vacilão") # Executa se a condição acima for True
+# Alterações
+apostolos.remove("judas")    # Remove pelo nome exato
+apostolos.append("matias")   # Adiciona no fim da fila
+apostolos.insert(2, "joão")  # Entra na posição 2 e empurra o resto pra direita
 
-Apostolos.remove("judas") # Remove o item pelo valor exato
-print("Judas removido", Apostolos) # Mostra sem o Judas
+# Limpeza
+item_removido = apostolos.pop() # Tira o último da lista e te entrega o valor
+apostolos.clear()               # Apaga tudo, deixa a lista vazia []
 
-Apostolos.append("matias") # Adiciona ao final da lista
-print("Matias, chega mais:", Apostolos) # Mostra com Matias no fim
-
-Apostolos.insert(6, "Henriques") # Empurra para a direita e entra no índice 6
-print("Seja bem vindo nagys:", Apostolos) # Mostra com Henriques no meio
-
-print("Só vai sobrar:", Apostolos.pop()) # Remove todos e imprime o último item (Matias)
-
-Apostolos.clear() # Esvazia a lista inteira
-print("Cadê a turma?: ", Apostolos) # Retorna [] (lista vazia)
-"""
-
-"""
 #---------------------------------------------------- Dicionário/Objeto
 customers = {"name":"john","id:":1,"registered":"november"}
 getCustomerData = customers["registered"] #Acessar item do objeto/Dicionário
 print(getCustomerData) #november
 """
-
 # ===================================================
 """ Estrutura condicional (If, Elif, Else) - 14/04/2026 """
 # ===================================================
-
 """
 position = "Webdesigner"
 correct_password = True
@@ -474,6 +463,7 @@ print(fila)  # deque(['cliente 2', 'Cliente 3'])
 """ Algoritmos de busca e ordenação 05/05/2026 """
 # ===================================================
 # ---------------------------------------------------- LISTA ORDENADA
+"""
 # Na vida real, não escrevemos Bubble sort ou Quick sort na mão. O Python já tem o Quick/Merge sort embutido e super rápido.
 lista_nomes = ["Zecas", "Carol", "Mayco", "Cíntia", "Ana paula", "Elon"]
 lista_ordenada = sorted(lista_nomes)
@@ -513,7 +503,7 @@ print(busca_binaria(lista_ordenada, "carlos"))  # Não achou
 # É o que o dicionário do Python usa. Você vai direto no endereço da memória.
 clientes = {"Carol": "ativo", "Ana": "inativo"}
 print(clientes["Carol"])  # Retorna 'ativo' instantaneamente
-
+"""
 # ===================================================
 """ Resolução de exercícios univesp - 28/04/2026 """
 # ===================================================
@@ -543,3 +533,76 @@ print(abs(54 - 57))  # 3
 prices = [34.99, 29.95, 31.50]
 print(min(prices))  # 29.95
 """
+# -------------------------Traduza os comandos a seguir para expressões Booleanas em Python e avalie-as:
+
+print(f"A soma de 2 e 2 é menor que 4 >>>>>", 2 + 2 < 4)  # False
+print(f"O valor de 7 // 3 é igual a 1 + 1 >>>>>", 7 // 3 == 1 + 1)  # True
+print(
+    f"A soma de 3 ao quadrado e 4 ao quadrado é igual a 25 >>>>>", 3**2 + 4**2 == 25
+)  # True
+print(f"A soma de 2, 4 e 6 é maior que 12 >>>>>", 2 + 4 + 6 > 12)  # False
+print(f"1387 é divisível por 19 >>>>>", 1387 % 19 == 0)
+print(f"31 é par >>>>>", 31 % 2 == 0)
+print(
+    f"O preço mais baixo dentre R$ 34,99, R$ 29,95 e R$ 31,50 é menor que R$ 30,00 >>>>>",
+    min(34.99, 29.95, 31.5) < 30.0,
+)  # True
+
+# -------------------------Escreva instruções Python que correspondem às ações a seguir e execute-as:
+# Atribua o valor inteiro 3 à variável a.
+a = 3
+# Atribua 4 à variável b.
+b = 4
+# Atribua à variável c o valor da expressão a * a + b * b.
+c = a * a + b * b
+print(c)  # 25
+
+# ------------------------- Escreva expressões Python usando s1, s2 e s3 e os operadores + e * a fim de avaliar para:
+s1 = "ant"
+s2 = "bat"
+s3 = "cod"
+
+ex1 = s1 + " " + s2 + " " + s3  # ant bat cod
+ex2 = (s1 + " ") * 10
+ex3 = s1 + " " + (s2 + " ") * 2 + (s3 + " ") * 3
+ex4 = (s1 + " " + s2 + " ") * 7
+ex5 = (s2 * 2 + s3 + " ") * 5
+print(ex1, ex2, ex3, ex4, ex5, sep="\n")
+
+s1 = "ant"
+s2 = "bat"
+s3 = "cod"
+
+# -------------------------Escreva expressões usando a string s e o operador de indexação que é avaliado como:
+s = "0123456789"
+ind1 = s[0]
+ind2 = s[1]
+ind3 = s[6]
+ind4 = s[-2]
+ind5 = s[-1]
+print(ind1, ind2, ind3, ind4, ind5, sep="\n")  # 0 1 6 8 9
+
+# -------------------------Escreva 2 expressões que são avaliadas, respectivamente, como a primeiro e a última palavras em palavras, na ordem do dicionário.
+palavras = ["taco", "bola", "celeiro", "cesta", "peteca"]
+palavras_ordenada = sorted(palavras)
+pfirst_plast = palavras_ordenada[0] + " " + palavras_ordenada[-1]
+print(pfirst_plast)  # bola taco
+
+# -------------------------lista de notas de trabalho de casa dos alunos
+notas = [9, 7, 7, 10, 3, 9, 6, 6, 2]
+# Uma expressão que avalia quantas vezes tem numero 7
+sete_many = notas.count(7)  # 2
+# Uma instrução que muda a última nota para 4.
+notas[-1] = 4  # [9, 7, 7, 10, 3, 9, 6, 6, 4]
+# Uma expressão que avalia para a nota mais alta.
+maior_nota = max(notas)  # 10
+# Uma instrução que classifica as notas da lista.
+organizada_notas = sorted(notas)  # [3, 4, 6, 6, 7, 7, 9, 9, 10]
+# Uma expressão que avalia para a média das notas.
+media_notas = sum(notas) / len(notas)  # 6.777777777777778
+print(sete_many, maior_nota, organizada_notas, media_notas, sep="\n")
+
+# -------------------------Solicite ao user a temperatura atual em graus Fahrenheit
+farenheit = int(input("Digite um valor de temperatura farenheit inteiro:"))
+celsius = 5 / 9 * (farenheit - 32)
+print(f"O valor da temperatura farenheit em celsius é: {celsius}")
