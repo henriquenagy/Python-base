@@ -532,7 +532,7 @@ print(abs(54 - 57))  # 3
 # 7. O menor preço entre os seguintes preços: R$ 34,99, R$ 29,95 e R$ 31,50.
 prices = [34.99, 29.95, 31.50]
 print(min(prices))  # 29.95
-"""
+
 # -------------------------Traduza os comandos a seguir para expressões Booleanas em Python e avalie-as:
 
 print(f"A soma de 2 e 2 é menor que 4 >>>>>", 2 + 2 < 4)  # False
@@ -606,3 +606,29 @@ print(sete_many, maior_nota, organizada_notas, media_notas, sep="\n")
 farenheit = int(input("Digite um valor de temperatura farenheit inteiro:"))
 celsius = 5 / 9 * (farenheit - 32)
 print(f"O valor da temperatura farenheit em celsius é: {celsius}")
+
+# -------------------------função average(), que aceita dois números como entrada e retorna a média dos números.
+def average(n1, n2):
+    return (n1 + n2) / 2
+
+
+print(average(2, 3.5))
+
+# -------------------------função perimeter(), que aceita, como entrada, o raio de um círculo (um número não negativo) e retorna o perímetro do círculo
+import math
+
+
+def perimeter(raio):
+    return 2 * math.pi * abs(raio)
+
+
+print(perimeter(-10))
+"""
+
+
+# -------------------------função negatives(), que aceita uma lista como entrada e exibe, um por linha, os valores negativos na lista.
+def negatives():
+    user_list = []
+
+
+print(negatives())
