@@ -1,7 +1,7 @@
 # ===================================================
-"""Saída e entrada de dados - 10/04/2026"""
-
+# Saída e entrada de dados - 10/04/2026
 # ===================================================
+
 """
 print("olá mundo")
 
@@ -28,8 +28,9 @@ cor = "#8750f7"
 print(type(cor))  # <class 'str'>
 
 """
+
 # ===================================================
-""" Operadores matemáticos e lógicos - 10/04/2026"""
+# Operadores matemáticos e lógicos - 10/04/2026
 # ===================================================
 
 """
@@ -50,8 +51,9 @@ print(my_namez[2:-2:2]) #niu ayMri - (Corta os 2 primeiros, tira os 2 últimos e
 """
 
 # ===================================================
-""" Listas e dicionários - 13/04/2026"""
+# Listas e dicionários - 13/04/2026
 # ===================================================
+
 """
 # Operações profissionais com números
 precos = [27.66, 29, 17, 11.23, 9.22, 10, 17, 4, 11, 54, 67, 17]
@@ -97,9 +99,11 @@ customers = {"name":"john","id:":1,"registered":"november"}
 getCustomerData = customers["registered"] #Acessar item do objeto/Dicionário
 print(getCustomerData) #november
 """
+
 # ===================================================
-""" Estrutura condicional (If, Elif, Else) - 14/04/2026 """
+# Estrutura condicional (If, Elif, Else) - 14/04/2026
 # ===================================================
+
 """
 position = "Webdesigner"
 correct_password = True
@@ -166,8 +170,9 @@ else:
 """
 
 # ===================================================
-""" Laços de repetição (loops) - 15/04/2026 """
+# Laços de repetição (loops) - 15/04/2026
 # ===================================================
+
 """
 # ---------------------------------------------------- FOR IN
 for i in range(5):
@@ -221,8 +226,9 @@ print(valores_com_taxa)  # [15, 25, 35]
 """
 
 # ===================================================
-""" Módulos - 16/04/2026 """
+# Módulos - 16/04/2026
 # ===================================================
+
 """
 import math
 
@@ -247,7 +253,7 @@ print(hour1, hour2)
 """
 
 # ===================================================
-""" Funções - 24/04/2026 """
+# Funções - 24/04/2026
 # ===================================================
 """
 # 1. Modelo básico
@@ -321,8 +327,9 @@ print(rename_archive("logo", "svg"))  # logo-otimizado.svg
 """
 
 # ===================================================
-""" Gerenciamento de memória | Memória: Mutáveis vs Imutáveis - 04/05/2026 """
+# Gerenciamento de memória | Memória: Mutáveis vs Imutáveis - 04/05/2026
 # ===================================================
+
 """
 # ---------------------------------------------------- Imutáveis (int, float, bool, str, tuplas). Se você muda o valor, o Python cria um novo objeto.
 a = 10
@@ -340,7 +347,7 @@ print(lista_b)  # [1, 2, 3, 4] (b muda junto, pois é a mesma lista na memória)
 """
 
 # ===================================================
-""" Programação orientada a objetos (POO) - 04/05/2026 """
+# Programação orientada a objetos (POO) - 04/05/2026
 # ===================================================
 """ 
 
@@ -422,7 +429,7 @@ print(carrinho_final.valor_total)  # 170
 """
 
 # ===================================================
-""" Recursão - 04/05/2026 """
+# Recursão - 04/05/2026
 # ===================================================
 """ 
 
@@ -437,7 +444,7 @@ def contagem_regressiva(n):
 contagem_regressiva(10)
 """
 # ===================================================
-""" Estruturas de dados (Pilhas, filas e árvores) - 04/05/2026 """
+# Estruturas de dados (Pilhas, filas e árvores) - 04/05/2026
 # ===================================================
 """ 
 # Exemplo: botão voltar do navegador.
@@ -459,9 +466,11 @@ atendido = fila.popleft()  # O primeiro item sai do começo da fila
 print(fila)  # deque(['cliente 2', 'Cliente 3'])
 
 """
+
 # ===================================================
-""" Algoritmos de busca e ordenação 05/05/2026 """
+# Algoritmos de busca e ordenação 05/05/2026
 # ===================================================
+
 # ---------------------------------------------------- LISTA ORDENADA
 """
 # Na vida real, não escrevemos Bubble sort ou Quick sort na mão. O Python já tem o Quick/Merge sort embutido e super rápido.
@@ -504,9 +513,57 @@ print(busca_binaria(lista_ordenada, "carlos"))  # Não achou
 clientes = {"Carol": "ativo", "Ana": "inativo"}
 print(clientes["Carol"])  # Retorna 'ativo' instantaneamente
 """
+
 # ===================================================
-""" Resolução de exercícios univesp - 28/04/2026 """
+# Pandas e Análise de Dados 12/08/26
 # ===================================================
+import pandas as pd
+
+# 1. LEITURA
+url = "https://raw.githubusercontent.com/alura-cursos/introducao-a-data-science/refs/heads/master/aula2.1/ratings.csv"
+df = pd.read_csv(
+    url
+)  # pode usar qqer nome. Povo usa dataFrame, mas pode por oq quiser.
+
+# 2. CONHECENDO A TABELA
+print(df.shape)  # Quantas linhas e colunas temos? - (100836, 4)
+print(
+    df.columns
+)  # Quais são os nomes das colunas originais? - Index(['userId', 'movieId', 'rating', 'timestamp'], dtype='str')
+print(df.head())  # Mostra as 5 primeiras linhas na tela
+
+# 3. LIMPANDO E ORGANIZANDO
+# Vamos traduzir os nomes das colunas para facilitar o trabalho
+df = df.rename(
+    columns={
+        "userId": "usuarioId",
+        "movieId": "filmeId",
+        "rating": "nota",
+        "timestamp": "momento",
+    }
+)
+
+# Removendo linhas que tenham dados vazios (boa prática)
+df = df.dropna()
+
+# 4. EXTRAINDO INFORMAÇÕES E ESTATÍSTICAS
+# Quais são as notas únicas que existem na tabela?
+print(df["nota"].unique())  # [4.  5.  3.  2.  1.  4.5 3.5 2.5 0.5 1.5
+
+# Quantas vezes cada nota foi dada pelos usuários?
+print(df["nota"].value_counts())
+
+# Qual é a mediana e a média geral das notas dos filmes?
+print(df["nota"].median())  # 3.5
+print(df["nota"].mean())  # 3.501556983616962
+
+# Resumão estatístico de todas as colunas numéricas
+print(df.describe())
+
+# ===================================================
+# Resolução de exercícios univesp - 28/04/2026
+# ===================================================
+
 """
 # A soma dos 5 primeiros inteiros positivos:
 numeros = [1, 2, 3, 4, 5]
@@ -625,10 +682,52 @@ def perimeter(raio):
 print(perimeter(-10))
 """
 
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# EXERCÍCIOS PRÁTICOS
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# -------------------------função negatives(), que aceita uma lista como entrada e exibe, um por linha, os valores negativos na lista.
+"""
+# -------------------------Função negatives() pede até 6 números e filtra os valores menores que zero
 def negatives():
+    # Cria as listas vazias fora dos loops para elas não serem resetadas a cada giro
     user_list = []
+    negative_list = []
+
+    print(
+        "Você pode digitar um número para a lista até 6x. Se quiser parar antes, basta só digitar a letra s:"
+    )
+
+    # Macete do while: usamos while no lugar do for para o loop não contar tentativas erradas.
+    # O for sempre queima uma chance, mesmo se a pessoa digitar uma letra.
+    # O while amarrado ao len() garante que a contagem só avance se um número válido entrar na lista.
+    while len(user_list) <= 6:
+        # Pega o dado cru do usuário. Todo input sempre chega como texto.
+        userNumber = input()
+
+        # Freio de mão para sair do loop antes dos 6 números.
+        if userNumber == "S" or userNumber == "s":
+            break
+
+        # Macete do try e except: serve para evitar que o programa trave se o usuário digitar texto no lugar de número.
+        # O sistema tenta (try) converter para float. Se a conversão falhar, ele cai no except de forma silenciosa e continua rodando.
+        try:
+            user_list.append(float(userNumber))
+        except ValueError:
+            print("Isso não é um número válido, digite novamente: ")
+
+    print(f"Sua lista atual: {user_list}")
+
+    # Segundo loop apenas para ler a lista pronta e separar quem é menor que zero
+    for positions in range(len(user_list)):
+        if user_list[positions] < 0:
+            negative_list.append(user_list[positions])
+
+    print(f"Números negativos na sua lista {negative_list}")
 
 
-print(negatives())
+# Chama a função diretamente pelo nome.
+# Não coloque print(negatives()) em volta, senão o terminal vai cuspir um 'None' vazio no final da execução.
+negatives()
+"""
+
+# desafio semana 3 - COM200 - 12/08
