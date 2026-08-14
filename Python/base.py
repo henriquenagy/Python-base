@@ -513,7 +513,7 @@ print(busca_binaria(lista_ordenada, "carlos"))  # Não achou
 clientes = {"Carol": "ativo", "Ana": "inativo"}
 print(clientes["Carol"])  # Retorna 'ativo' instantaneamente
 """
-
+"""
 # ===================================================
 # Pandas e Análise de Dados 12/08/26
 # ===================================================
@@ -559,7 +559,7 @@ print(df["nota"].mean())  # 3.501556983616962
 
 # Resumão estatístico de todas as colunas numéricas
 print(df.describe())
-
+"""
 # ===================================================
 # Resolução de exercícios univesp - 28/04/2026
 # ===================================================
@@ -682,6 +682,12 @@ def perimeter(raio):
 print(perimeter(-10))
 """
 
+
+# ------------------------- Desafio analise de CPF 13/08/26
+# Exemplo f-string com zeros fixos:
+numero = 12345
+texto_formatado = f"{numero:011d}"
+# Resultado: "00000012345"
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # EXERCÍCIOS PRÁTICOS
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
