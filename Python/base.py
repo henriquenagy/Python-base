@@ -684,10 +684,37 @@ print(perimeter(-10))
 
 
 # ------------------------- Desafio analise de CPF 13/08/26
-# Exemplo f-string com zeros fixos:
-numero = 12345
-texto_formatado = f"{numero:011d}"
-# Resultado: "00000012345"
+def cpf_challenge():
+    user_real_cpf = input("Digite o seu CPF completo: ")
+
+    # 1. Limpeza e conversão para lista de inteiros em 1 linha
+    data_analyser = [int(numb) for numb in user_real_cpf if numb.isdigit()]
+
+    # Validação simples de tamanho
+    if len(data_analyser) != 11:
+        print("CPF inválido: deve conter exatamente 11 dígitos.")
+        return
+
+    # 2. Primeiro cálculo: 9 primeiros dígitos, multiplicadores de 1 a 9
+    soma1 = sum(digito * mult for mult, digito in enumerate(data_analyser[:9], start=1))
+    resto1 = (soma1 % 11) % 10  # O % 10 garante a "unidade do resto"
+
+    # 3. Segundo cálculo: 10 primeiros dígitos, multiplicadores de 0 a 9
+    soma2 = sum(
+        digito * mult for mult, digito in enumerate(data_analyser[:10], start=0)
+    )
+    resto2 = (soma2 % 11) % 10  # O % 10 garante a "unidade do resto"
+
+    # 4. Verificação dos dígitos verificadores (índices 9 e 10)
+    if resto1 == data_analyser[9] and resto2 == data_analyser[10]:
+        print("O seu CPF está correto!")
+    else:
+        print("CPF incorreto!")
+
+
+cpf_challenge()
+
+
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # EXERCÍCIOS PRÁTICOS
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
